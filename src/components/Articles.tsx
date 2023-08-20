@@ -18,8 +18,14 @@ export default function Articles() {
     fetch(
       "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2015/10/10"
     )
-      .then((response) => response.json())
-      .then((data) => setArticles(data.items[0].articles));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => setArticles(data.items[0].articles))
+      .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {
