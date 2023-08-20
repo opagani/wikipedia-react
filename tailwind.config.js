@@ -7,6 +7,11 @@ export default {
         lora: ["Lora", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
       },
+      colors: {
+        avocado: {
+          400: "#E0E9CB",
+        },
+      },
     },
   },
   plugins: [],
