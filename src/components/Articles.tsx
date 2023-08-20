@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-
-interface Article {
-  article: string;
-  views: number;
-  rank: number;
-}
+import Article from "./Article";
 
 // The wikipedia API allows you to get a list of articles with the most page views for a
 // specific day:
@@ -24,28 +19,10 @@ export default function Articles() {
   }, []);
 
   return (
-    <div className="flex justify-center flex-col items-center">
-      <div>
-        {articles.map((article) => (
-          <Article key={crypto.randomUUID()} article={article} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function Article({ article }: { article: Article }) {
-  return (
-    <div className="flex flex-col items-start">
-      <div className="flex h-6 items-center">
-        <div className="text-gray-500">{article.rank}</div>
-        <div className="ml-3 text-sm">
-          <div className="font-medium text-gray-900">{article.article}</div>
-        </div>
-        <div className="ml-3 text-sm">
-          <div className="font-medium text-gray-900">{article.views}</div>
-        </div>
-      </div>
+    <div className="flex justify-center flex-col p-8 gap-5 rounded-2xl bg-white">
+      {articles.map((article) => (
+        <Article key={crypto.randomUUID()} article={article} />
+      ))}
     </div>
   );
 }
