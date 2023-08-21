@@ -1,8 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SearchContext } from "../App";
-import { CalendarIcon, ListBulletIcon } from "@heroicons/react/20/solid";
+import {
+  CalendarIcon,
+  ChevronUpIcon,
+  ListBulletIcon,
+} from "@heroicons/react/20/solid";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function ActionBar() {
+  const today = new Date();
+  const yesterday = new Date(today);
+
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  const [startDate, setStartDate] = useState<Date | null>(yesterday);
+
   const { numResults, setNumResults, setCurrentPage } =
     useContext(SearchContext);
 
@@ -13,9 +26,23 @@ export default function ActionBar() {
   return (
     <div className="flex h-24 justify-center flex-col gap-5 rounded-2xl bg-white">
       <div className="flex justify-center items-center rounded-full p-4 gap-4">
-        <div className="h-[72px] w-[260px] rounded-full p-3 gap-6 bg-neutral-100">
+        <div className="flex justify-center items-center h-[72px] w-[260px] rounded-full p-3 gap-6 bg-neutral-100">
           <div className="flex flex-col justify-center items-center h-12 w-12 rounded-full bg-avocado-200">
             <CalendarIcon className="h-5 w-5 text-green-900" />
+          </div>
+          <div className="h-[42px] w-[125px]flex flex-col justify-center items-center">
+            <div className="h-4 w-[50px] flex justify-center items-center gap-[6px]">
+              <div className="text-xs font-medium font-poppins text-neutral-500">
+                DATE
+              </div>
+              <ChevronUpIcon className="h-5 -w-5 text-neutral-500" />
+            </div>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              className="bg-neutral-100"
+              dateFormat="MMMM d, yyyy"
+            />
           </div>
         </div>
         <div className="inline-block h-full min-h-[1em] w-px mx-5 self-stretch bg-neutral-300 opacity-100 dark:opacity-50"></div>

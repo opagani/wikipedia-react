@@ -3,3 +3,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-datepicker__header {
+  background-color: white;
+}
+
+.react-datepicker__day--selected {
+  background-color: #b3cec9;
+  color: #025b4b;
+  border-radius: 100px;
+
+  &:hover {
+    background-color: #d4d8d9;
+    border-radius: 100px;
+  }
+}
+
+.react-datepicker__day {
+  &:hover {
+    background-color: #d4d8d9;
+    border-radius: 100px;
+  }
+}
