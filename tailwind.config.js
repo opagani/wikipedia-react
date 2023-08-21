@@ -11,6 +11,9 @@ export default {
         avocado: {
           400: "#E0E9CB",
         },
+        marigold: {
+          200: "#FAE7CC",
+        },
       },
     },
   },

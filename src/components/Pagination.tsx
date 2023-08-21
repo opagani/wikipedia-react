@@ -62,7 +62,7 @@ function Pagination({
         </li>
       ))}
       <li
-        className={`h-10 w-10 leading-10 text-center rounded-full border border-neutral-400 ml-4" ${
+        className={`h-10 w-10 leading-10 text-center rounded-full border border-neutral-400 ml-4 ${
           currentPage === nPages ? "bg-neutral-300" : ""
         } ${
           currentPage > 4
