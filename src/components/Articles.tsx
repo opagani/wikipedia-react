@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [numResults, setNumResults] = useState(50);
+  const [numResults, setNumResults] = useState(100);
   const recordsPerPage = 10;
 
   // article: "Main_Page",

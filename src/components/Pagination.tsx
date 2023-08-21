@@ -29,8 +29,8 @@ function Pagination({
     setCurrentPage(pgNumber);
   };
 
-  //  add 4th page number if there are more than 25 results
-  if (numResults > 25) {
+  //  add 4th page number if there are more than 30 results
+  if (numResults > 30) {
     pageNumbers.push(4);
   }
 
@@ -64,7 +64,13 @@ function Pagination({
       <li
         className={`h-10 w-10 leading-10 text-center rounded-full border border-neutral-400 ml-4" ${
           currentPage === nPages ? "bg-neutral-300" : ""
-        } `}
+        } ${
+          currentPage > 4
+            ? currentPage === nPages
+              ? "bg-neutral-300"
+              : "bg-avocado-400"
+            : ""
+        }`}
       >
         <a
           onClick={nextPage}
