@@ -37,7 +37,7 @@ function Pagination({
   return (
     <ul className="flex justify-center items-center gap-2">
       <li
-        className={`h-10 w-10 leading-10 text-center rounded-full border border-neutral-400 mr-4 ${
+        className={`flex flex-col justify-center items-center h-10 w-10 rounded-full border border-neutral-400 mr-4 ${
           currentPage === 1 ? "bg-neutral-300" : ""
         } `}
       >
@@ -46,7 +46,7 @@ function Pagination({
           href="#"
           className={`${currentPage === 1 ? "pointer-events-none" : ""}`}
         >
-          <ChevronLeftIcon />
+          <ChevronLeftIcon className="h-5 w-5" />
         </a>
       </li>
       {pageNumbers.map((pgNumber) => (
@@ -62,7 +62,7 @@ function Pagination({
         </li>
       ))}
       <li
-        className={`h-10 w-10 leading-10 text-center rounded-full border border-neutral-400 ml-4 ${
+        className={`flex flex-col justify-center items-center h-10 w-10 rounded-full border border-neutral-400 ml-4 ${
           currentPage === nPages ? "bg-neutral-300" : ""
         } ${
           currentPage > 4
@@ -77,7 +77,7 @@ function Pagination({
           href="#"
           className={`${currentPage === nPages ? "pointer-events-none" : ""}`}
         >
-          <ChevronRightIcon />
+          <ChevronRightIcon className="h-5 w-5" />
         </a>
       </li>
     </ul>

@@ -9,6 +9,7 @@ export default {
       },
       colors: {
         avocado: {
+          200: "#ECF1E0",
           400: "#E0E9CB",
         },
         marigold: {

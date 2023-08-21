@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SearchContext } from "../App";
-import { ListBulletIcon } from "@heroicons/react/20/solid";
+import { CalendarIcon, ListBulletIcon } from "@heroicons/react/20/solid";
 
 export default function ActionBar() {
   const { numResults, setNumResults, setCurrentPage } =
@@ -13,11 +13,15 @@ export default function ActionBar() {
   return (
     <div className="flex h-24 justify-center flex-col gap-5 rounded-2xl bg-white">
       <div className="flex justify-center items-center rounded-full p-4 gap-4">
-        <div className="h-[72px] w-[260px] rounded-full p-3 gap-6 bg-neutral-100"></div>
+        <div className="h-[72px] w-[260px] rounded-full p-3 gap-6 bg-neutral-100">
+          <div className="flex flex-col justify-center items-center h-12 w-12 rounded-full bg-avocado-200">
+            <CalendarIcon className="h-5 w-5 text-green-900" />
+          </div>
+        </div>
         <div className="inline-block h-full min-h-[1em] w-px mx-5 self-stretch bg-neutral-300 opacity-100 dark:opacity-50"></div>
         <div className="flex justify-start items-center h-[72px] w-[260px] rounded-full p-3 gap-6">
-          <div className="h-12 w-12 rounded-full bg-marigold-200">
-            <ListBulletIcon className="text-red-200 text-sm" />
+          <div className="flex flex-col justify-center items-center h-12 w-12 rounded-full bg-marigold-200">
+            <ListBulletIcon className="h-5 w-5 text-red-300" />
           </div>
           <div>
             <label
