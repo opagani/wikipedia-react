@@ -5,7 +5,7 @@ import { SearchContext } from "../App";
 
 // The wikipedia API allows you to get a list of articles with the most page views for a
 // specific day:
-// https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/allaccess/2015/10/10
+// https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/US/all-access/2023/08/21
 export default function Articles() {
   const { numResults, currentPage, setCurrentPage, startDate, country } =
     useContext(SearchContext);
@@ -13,8 +13,9 @@ export default function Articles() {
   const [articles, setArticles] = useState([]);
   const recordsPerPage = 10;
 
-  // article: "Main_Page",
-  // views: 18793503,
+  // article: "Sean_O'Malley_(fighter)",
+  // project: "en.wikipedia",
+  // views_ceil: 214400,
   // rank: 1
   useEffect(() => {
     const year = startDate.getFullYear();

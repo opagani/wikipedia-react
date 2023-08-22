@@ -1,27 +1,130 @@
-# React + TypeScript + Vite
+# Wikipedia React!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repo contains the code to create a Wikipedia app to display the most viewed pages for a specific day and country based on user inputs.
 
-Currently, two official plugins are available:
+This application is using React and TypeScript working in Vite with HMR and some ESLint rules.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [Wikipedia React!](#wikipedia-react)
+  - [Table of Contents](#table-of-contents)
+  - [Quick Install Setup](#quick-install-setup)
+  - [Setup For Mac and Linux Users (Unix Users)](#setup-for-mac-and-linux-users-unix-users)
+  - [Clone and Install](#clone-and-install)
+  - [Running the code](#running-the-code)
+  - [Testing the app](#testing-the-app)
+  - [API and endpoints](#api-and-endpoints)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Quick Install Setup
 
-- Configure the top-level `parserOptions` property like this:
+Already have Node/NPM installed? Then start here. Otherwise we have some instructions below in this document if you don't.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+**Clone the repository**
+
+- Do `git clone https://github.com/opagani/wikipedia-react.git` first
+- Do `cd wikipedia-react`
+
+**Installation**
+
+- Do `npm install` first
+- Do `npm run dev`
+- It should be running now on localhost:5173
+
+If the app runs, you're ready for testing the app
+
+## Setup For Mac and Linux Users (Unix Users)
+
+If you have any problems with these steps, see the **Troubleshooting** section at the bottom of this page.
+
+- **Need to install Git?** - http://git-scm.com/downloads
+- **Need to install Node?** We recommend using [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
+
+Note that **NPM (Node Package Manager)** is a command-line tool that will also be installed with Node
+
+If you need to verify that you have NVM installed, do: `nvm version`. Then install Node. Which version of Node should I use? It probably won't matter much, but we try to use the [Active Version](https://nodejs.org/en/about/releases/).
+
+```sh
+# For Node 18 (for example)
+$ nvm install 18
+
+# See this page for more install options:
+# https://github.com/nvm-sh/nvm#usage
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Verify you have Git, Node, and npm installed. Installing Node will install NPM:
+
+```sh
+$ git --version
+$ node --version
+$ npm --version
+```
+
+Now jump to **Clone and Install** below
+
+<hr />
+
+## Clone and Install
+
+- Do `git clone https://github.com/opagani/wikipedia-react.git` first
+- Do `cd wikipedia-react`
+- Do `npm install`
+
+## Running the code
+
+If you have any issues running the code, we have a general **Troubleshooting** section at the bottom of this page.
+
+```sh
+# If you're in the root path of the repo
+
+# Run the app
+$ npm run dev
+
+```
+
+Go to `localhost:5173` in your browser. You have to do this manually.
+
+If the application renders up in the browser, you're ready to go. 👍
+
+## Testing the app
+
+● A user should be able to select a time on a calendar (defaulting to yesterday)
+● A user should be able to decide how many results to show (options being 25, 50, 75, 100, 200 default to 100)
+● A user should be able to search by country (options being USA, Japan, Italy, China, France default to USA)
+● Based on what is selected, a user will see a frontend view that includes the name of the article, the number of views and the rank.
+
+## API and endpoints
+
+The wikipedia API allows you to get a list of articles with the most page views for a specific day and a specific country:
+
+https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/US/all-access/2023/08/21
+
+Response:
+
+```
+{
+items: [
+      {
+         country: "US",
+         access: "all-access",
+         year: "2023",
+         month: "08",
+         day: "10",
+         articles: [
+            {
+            article: "Lil_Tay",
+            project: "en.wikipedia",
+            views_ceil: 188500,
+            rank: 1
+            },
+            {
+            article: "Robbie_Robertson",
+            project: "en.wikipedia",
+            views_ceil: 158700,
+            rank: 2
+            },
+            ...
+         ]
+      }
+   ]
+}
+```
