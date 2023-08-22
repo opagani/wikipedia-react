@@ -13,7 +13,8 @@ This application is using React and TypeScript working in Vite with HMR and some
   - [Clone and Install](#clone-and-install)
   - [Running the code](#running-the-code)
   - [Testing the app](#testing-the-app)
-  - [API and endpoints](#api-and-endpoints)
+  - [API endpoints](#api-endpoints)
+  - [Images of the App](#images-of-the-app)
 
 ## Quick Install Setup
 
@@ -92,7 +93,7 @@ If the application renders up in the browser, you're ready to go. 👍
 ● A user should be able to search by country (options being USA, Japan, Italy, China, France default to USA)
 ● Based on what is selected, a user will see a frontend view that includes the name of the article, the number of views and the rank.
 
-## API and endpoints
+## API endpoints
 
 The wikipedia API allows you to get a list of articles with the most page views for a specific day and a specific country:
 
@@ -111,20 +112,34 @@ items: [
          day: "10",
          articles: [
             {
-            article: "Lil_Tay",
-            project: "en.wikipedia",
-            views_ceil: 188500,
-            rank: 1
+               article: "Sean_O'Malley_(fighter)",
+               project: "en.wikipedia",
+               views_ceil: 214400,
+               rank: 1
             },
             {
-            article: "Robbie_Robertson",
-            project: "en.wikipedia",
-            views_ceil: 158700,
-            rank: 2
-            },
+               article: "Ron_Cephas_Jones",
+               project: "en.wikipedia",
+               views_ceil: 167500,
+               rank: 2
+            }
             ...
          ]
       }
    ]
 }
 ```
+
+## Images of the App
+
+**Desktop view**
+
+![Desktop top part of the app](./images/desktop-1.png)
+![Desktop bottom part of the app](./images/desktop-2.png)
+
+<hr />
+
+**Responsive view**
+
+![Responsive top part of the app](./images/responsive-1.png)
+![Responsive top part of the app](./images/responsive-2.png)
