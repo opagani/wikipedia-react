@@ -23,9 +23,9 @@ export default function ActionBar() {
   }
 
   return (
-    <div className="flex h-24 justify-center flex-col gap-5 rounded-2xl bg-white">
-      <div className="flex justify-center items-center rounded-full p-4 gap-4">
-        <div className="flex justify-center items-center h-[72px] w-[260px] rounded-full p-3 gap-6 bg-neutral-100">
+    <div className="flex md:h-24 justify-center flex-col gap-5 md:rounded-full bg-white">
+      <div className="flex justify-start md:justify-center flex-col md:flex-row items-center rounded-full py-3 px-6 md:p-4 md:gap-4">
+        <div className="flex justify-start md:justify-center items-center w-full h-[66px] md:h-[72px] md:w-[260px] md:rounded-full p-3 gap-6 md:bg-neutral-100">
           <div className="flex flex-col justify-center items-center h-12 w-12 rounded-full bg-avocado-200">
             <CalendarIcon className="h-5 w-5 text-green-900" />
           </div>
@@ -45,8 +45,8 @@ export default function ActionBar() {
             />
           </div>
         </div>
-        <div className="inline-block h-full min-h-[1em] w-px mx-5 self-stretch bg-neutral-300 opacity-100 dark:opacity-50"></div>
-        <div className="flex justify-start items-center h-[72px] w-[260px] rounded-full p-3 gap-6">
+        <div className="md:inline-block md:h-full md:min-h-[1em] md:w-px md:mx-5 md:self-stretch md:bg-neutral-300 md:opacity-100 md:dark:opacity-50"></div>
+        <div className="flex justify-start items-center w-full h-[66px] md:h-[72px] md:w-[260px] md:rounded-full p-3 gap-6">
           <div className="flex flex-col justify-center items-center h-12 w-12 rounded-full bg-marigold-200">
             <ListBulletIcon className="h-5 w-5 text-red-300" />
           </div>
@@ -76,7 +76,7 @@ export default function ActionBar() {
           </div>
         </div>
         <button
-          className="h-16 w-[160px] rounded-full py-3 px-6 gap-2 ml-auto bg-green-900 text-white font-poppins font-medium"
+          className="h-12 md:h-16 w-full md:w-[160px] rounded-full my-3 bg-green-900 text-white font-poppins font-medium"
           onClick={onSearchClick}
         >
           Search

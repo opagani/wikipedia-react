@@ -35,14 +35,20 @@ export default function Articles() {
       .then((data) => {
         // remove the first two articles, which are always "Main_Page" and "Special:Search"
         // and update the rank of the remaining articles
-        const articles = data.items[0].articles.slice(2);
+        if (
+          data.items[0].articles[0].article === "Main_Page" &&
+          data.items[0].articles[1].article === "Special:Search"
+        ) {
+          const articles = data.items[0].articles.slice(2);
 
-        for (const article of articles) {
-          article.article.replace("_", " ");
-          article.rank = article.rank - 2;
+          for (const article of articles) {
+            article.rank = article.rank - 2;
+          }
+
+          setArticles(articles);
+        } else {
+          setArticles(data.items[0].articles);
         }
-
-        setArticles(articles);
       })
       .catch((error) => console.error(error));
   }, [startDate]);
@@ -60,7 +66,7 @@ export default function Articles() {
 
   return (
     <>
-      <div className="flex justify-center flex-col p-8 gap-5 rounded-2xl bg-white">
+      <div className="flex justify-center flex-col p-6 md:p-8 gap-5 rounded-2xl bg-white">
         {currentRecords.map((article) => (
           <Article key={crypto.randomUUID()} article={article} />
         ))}

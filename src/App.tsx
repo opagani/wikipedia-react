@@ -32,8 +32,10 @@ function App() {
         setStartDate,
       }}
     >
-      <div className="flex justify-center flex-col max-w-[800px] mx-auto gap-10 pt-14 pb-20 font-lora">
-        <h1 className="mx-auto text-[40px] h-[60px]">Top Wikipedia articles</h1>
+      <div className="flex justify-center flex-col md:max-w-[800px] mx-auto gap-6 pt-8 md:pt-14 pb-20 font-lora">
+        <div className="mx-auto text-[28px] md:text-[40px]">
+          <h1>Top Wikipedia articles</h1>
+        </div>
         <ActionBar />
         <Articles />
       </div>
