@@ -7,7 +7,9 @@ import { SearchContext } from "../App";
 // specific day:
 // https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/allaccess/2015/10/10
 export default function Articles() {
-  const { numResults, currentPage, setCurrentPage } = useContext(SearchContext);
+  const { numResults, currentPage, setCurrentPage, startDate } =
+    useContext(SearchContext);
+
   const [articles, setArticles] = useState([]);
   const recordsPerPage = 10;
 
@@ -15,8 +17,14 @@ export default function Articles() {
   // views: 18793503,
   // rank: 1
   useEffect(() => {
+    const year = startDate.getFullYear();
+    const month = ("0" + (startDate.getMonth() + 1)).slice(-2);
+    const day = ("0" + startDate.getDate()).slice(-2);
+
+    const date = `${year}/${month}/${day}`;
+
     fetch(
-      "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2015/10/10"
+      `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${date}`
     )
       .then((response) => {
         if (!response.ok) {
@@ -25,10 +33,19 @@ export default function Articles() {
         return response.json();
       })
       .then((data) => {
-        setArticles(data.items[0].articles);
+        // remove the first two articles, which are always "Main_Page" and "Special:Search"
+        // and update the rank of the remaining articles
+        const articles = data.items[0].articles.slice(2);
+
+        for (const article of articles) {
+          article.article.replace("_", " ");
+          article.rank = article.rank - 2;
+        }
+
+        setArticles(articles);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [startDate]);
 
   let indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;

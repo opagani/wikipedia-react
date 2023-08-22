@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SearchContext } from "../App";
 import {
   CalendarIcon,
@@ -7,20 +7,19 @@ import {
 } from "@heroicons/react/20/solid";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { getDateYesterday } from "../utils/utils";
 
 export default function ActionBar() {
-  const today = new Date();
-  const yesterday = new Date(today);
-
-  yesterday.setDate(yesterday.getDate() - 1);
-
-  const [startDate, setStartDate] = useState<Date | null>(yesterday);
-
-  const { numResults, setNumResults, setCurrentPage } =
+  const { numResults, setNumResults, setCurrentPage, startDate, setStartDate } =
     useContext(SearchContext);
 
   function onSearchClick() {
     setCurrentPage(1);
+    setStartDate(startDate);
+  }
+
+  function handleChangeDate(date: Date) {
+    setStartDate(date);
   }
 
   return (
@@ -39,9 +38,10 @@ export default function ActionBar() {
             </div>
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={handleChangeDate}
               className="bg-neutral-100"
               dateFormat="MMMM d, yyyy"
+              maxDate={getDateYesterday()}
             />
           </div>
         </div>
