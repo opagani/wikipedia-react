@@ -1,6 +1,6 @@
 interface ArticleProps {
   article: string;
-  views: number;
+  views_ceil: number;
   rank: number;
 }
 
@@ -12,7 +12,7 @@ function Article({ article }: { article: ArticleProps }) {
         {article.article.replaceAll("_", " ")}
       </div>
       <div className="ml-auto text-sm text-neutral-500 font-poppins">
-        {new Intl.NumberFormat("en-US").format(article.views)} views
+        {new Intl.NumberFormat("en-US").format(article.views_ceil)} views
       </div>
     </div>
   );

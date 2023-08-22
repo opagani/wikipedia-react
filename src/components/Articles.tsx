@@ -7,7 +7,7 @@ import { SearchContext } from "../App";
 // specific day:
 // https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/allaccess/2015/10/10
 export default function Articles() {
-  const { numResults, currentPage, setCurrentPage, startDate } =
+  const { numResults, currentPage, setCurrentPage, startDate, country } =
     useContext(SearchContext);
 
   const [articles, setArticles] = useState([]);
@@ -24,7 +24,7 @@ export default function Articles() {
     const date = `${year}/${month}/${day}`;
 
     fetch(
-      `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${date}`
+      `https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/${country}/all-access/${date}`
     )
       .then((response) => {
         if (!response.ok) {
@@ -33,16 +33,30 @@ export default function Articles() {
         return response.json();
       })
       .then((data) => {
-        // remove the first two articles, which are always "Main_Page" and "Special:Search"
+        let count = 0;
+        const blackList = [
+          "Main_Page",
+          "Special:Search",
+          "Cookie_(informatique)",
+        ];
+
+        // check the first 4 articles for USA and remove any of the following:
+        // "Main_Page", "Special:Search" and "Cookie_(informatique)"
         // and update the rank of the remaining articles
-        if (
-          data.items[0].articles[0].article === "Main_Page" &&
-          data.items[0].articles[1].article === "Special:Search"
-        ) {
-          const articles = data.items[0].articles.slice(2);
+        for (let i = 0; i < 4; i++) {
+          if (
+            country === "US" &&
+            blackList.includes(data.items[0].articles[i].article)
+          ) {
+            count = count + 1;
+          }
+        }
+
+        if (count > 0) {
+          const articles = data.items[0].articles.slice(count);
 
           for (const article of articles) {
-            article.rank = article.rank - 2;
+            article.rank = article.rank - count;
           }
 
           setArticles(articles);
@@ -51,7 +65,7 @@ export default function Articles() {
         }
       })
       .catch((error) => console.error(error));
-  }, [startDate]);
+  }, [country, startDate]);
 
   let indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;

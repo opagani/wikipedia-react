@@ -15,6 +15,10 @@ export default {
         marigold: {
           200: "#FAE7CC",
         },
+        ocean: {
+          200: "#DEE8F6",
+          400: "#2464C6",
+        },
       },
     },
   },
