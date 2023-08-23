@@ -12,6 +12,7 @@ This application is using React and TypeScript working in Vite with HMR and some
   - [Setup For Mac and Linux Users (Unix Users)](#setup-for-mac-and-linux-users-unix-users)
   - [Clone and Install](#clone-and-install)
   - [Running the code](#running-the-code)
+  - [Runnig the test suite](#runnig-the-test-suite)
   - [Testing the app](#testing-the-app)
   - [API endpoints](#api-endpoints)
   - [Images of the App](#images-of-the-app)
@@ -86,12 +87,44 @@ Go to `localhost:5173` in your browser. You have to do this manually.
 
 If the application renders up in the browser, you're ready to go. 👍
 
+## Runnig the test suite
+
+```sh
+# If you're in the root path of the repo
+
+# Run the test
+$ npm run test
+
+```
+
+```sh
+oscarpagani@Oscars-MacBook-Pro wikipedia-react % npm run test
+
+> wikipedia-react@0.0.0 test
+> jest
+
+ts-jest[config] (WARN) message TS151001: If you have issues related to imports, you should consider setting `esModuleInterop` to `true` in your TypeScript configuration file (usually `tsconfig.json`). See https://blogs.msdn.microsoft.com/typescript/2018/01/31/announcing-typescript-2-7/#easier-ecmascript-module-interoperability for more information.
+ PASS  src/components/Article.test.tsx
+  Article
+    ✓ should display a rank of 1 (19 ms)
+    ✓ should display article without any '_' in it (2 ms)
+    ✓ should display views_ceil of 214,400 (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        1.311 s, estimated 2 s
+Ran all test suites.
+```
+
 ## Testing the app
 
-● A user should be able to select a time on a calendar (defaulting to yesterday)
-● A user should be able to decide how many results to show (options being 25, 50, 75, 100, 200 default to 100)
-● A user should be able to search by country (options being USA, Japan, Italy, China, France default to USA)
-● Based on what is selected, a user will see a frontend view that includes the name of the article, the number of views and the rank.
+**Manual testing**
+
+- A user should be able to select a time on a calendar (defaulting to yesterday)
+- A user should be able to decide how many results to show (options being 25, 50, 75, 100, 200 default to 100)
+- A user should be able to search by country (options being USA, Japan, Italy, China, France default to USA)
+- Based on what is selected, a user will see a frontend view that includes the name of the article, the number of views and the rank.
 
 ## API endpoints
 
