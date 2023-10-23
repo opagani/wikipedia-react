@@ -148,13 +148,13 @@ items: [
                article: "Sean_O'Malley_(fighter)",
                project: "en.wikipedia",
                views_ceil: 214400,
-               rank: 1
+               rank: 1,
             },
             {
                article: "Ron_Cephas_Jones",
                project: "en.wikipedia",
                views_ceil: 167500,
-               rank: 2
+               rank: 2,
             }
             ...
          ]
